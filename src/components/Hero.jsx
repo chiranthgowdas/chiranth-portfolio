@@ -5,16 +5,15 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
 
-      {/* Background glow */}
+      {/* Background Glow */}
       <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
-      {/* Profile */}
+      {/* Profile Image */}
       <div className="relative mb-6 group">
 
-        {/* Glow ring */}
+        {/* Glow Ring */}
         <div className="absolute inset-0 rounded-full bg-cyan-400 blur-xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
 
-        {/* IMAGE */}
         <img
           src={profile}
           alt="Chiranth"
@@ -24,7 +23,7 @@ export default function Hero() {
             rounded-full
             border-4 border-cyan-400
             object-cover
-            object-[100%_0%]   /* 👈 CONTROL THIS */
+            object-[100%_0%]   /* 👈 ADJUST THIS */
             scale-105
             transition duration-500
             group-hover:scale-110
@@ -50,38 +49,40 @@ export default function Hero() {
           href="https://www.linkedin.com/in/chiranth-gowda-s-67565a310/"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300"
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
         >
           Connect on LinkedIn
         </a>
 
-        {/* Resume VIEW */}
+        {/* VIEW RESUME (WORKS) */}
         <a
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 rounded-lg bg-gray-200 text-black font-semibold hover:bg-white"
+          className="px-6 py-3 rounded-lg bg-gray-200 text-black font-semibold hover:bg-white transition"
         >
           View Resume
         </a>
 
-        {/* Resume DOWNLOAD (force) */}
+        {/* DOWNLOAD RESUME (FORCE) */}
         <button
           onClick={() => {
             const link = document.createElement("a");
             link.href = "/resume.pdf";
             link.download = "Chiranth_Gowda_Resume.pdf";
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
           }}
-          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300"
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
         >
           Download Resume
         </button>
 
-        {/* Projects (FIXED) */}
+        {/* PROJECTS (FIXED ROUTING) */}
         <Link
           to="/projects"
-          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300"
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
         >
           My Projects
         </Link>
