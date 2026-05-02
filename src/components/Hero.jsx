@@ -1,70 +1,56 @@
-import profile from "../assets/profile.jpg";
+import React from "react";
 import { Link } from "react-router-dom";
+import profile from "../assets/profile.jpg";
 
-export default function Hero() {
+const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#021B2B] via-[#06283D] to-[#0A2A43] text-white overflow-hidden">
 
-      {/* Background Glow */}
-      <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+      {/* 🔥 GLOW BACKGROUND (does NOT block clicks) */}
+      <div className="absolute w-[600px] h-[600px] bg-cyan-400/20 blur-[140px] rounded-full 
+      top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+      pointer-events-none"></div>
 
-      {/* Profile Image */}
-      <div className="relative mb-6 group">
-
-        {/* Glow Ring */}
-        <div className="absolute inset-0 rounded-full bg-cyan-400 blur-xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
-
-        <img
-          src={profile}
-          alt="Chiranth"
-          className="
-            relative
-            w-56 h-56 md:w-72 md:h-72
-            rounded-full
-            border-4 border-cyan-400
-            object-cover
-            object-[100%_0%]   /* 👈 ADJUST THIS */
-            scale-105
-            transition duration-500
-            group-hover:scale-110
-          "
-        />
+      {/* PROFILE IMAGE */}
+      <div className="relative mb-6">
+        <div className="w-56 h-56 rounded-full border-4 border-cyan-400 shadow-[0_0_40px_#22d3ee] overflow-hidden">
+          <img
+            src={profile}
+            alt="profile"
+            className="w-full h-full object-cover"
+            style={{
+              objectPosition: "50% 10%"   // 🔥 CHANGE THIS VALUE TO ADJUST FACE
+            }}
+          />
+        </div>
       </div>
 
-      {/* Name */}
-      <h1 className="text-4xl md:text-6xl font-bold text-white mb-3">
+      {/* NAME */}
+      <h1 className="text-5xl md:text-6xl font-bold mb-4">
         Chiranth Gowda S
       </h1>
 
-      {/* Tagline */}
-      <p className="text-gray-300 text-lg md:text-xl mb-6">
+      {/* TAGLINE */}
+      <p className="text-lg md:text-xl text-gray-300 mb-8">
         Data | AI | Software | Innovation
       </p>
 
-      {/* Buttons */}
-      <div className="flex flex-wrap justify-center gap-4">
+      {/* BUTTONS */}
+      <div className="flex flex-wrap justify-center gap-4 px-4">
 
-        {/* LinkedIn */}
+        {/* LINKEDIN */}
         <a
           href="https://www.linkedin.com/in/chiranth-gowda-s-67565a310/"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold 
+          hover:bg-cyan-300 transition 
+          inline-flex items-center justify-center cursor-pointer"
         >
           Connect on LinkedIn
         </a>
 
-        {/* VIEW RESUME (WORKS) */}
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-3 rounded-lg bg-gray-200 text-black font-semibold hover:bg-white transition"
-        >
-          View Resume
-        </a>
-
-        {/* DOWNLOAD RESUME (FORCE) */}
+        {/* DOWNLOAD RESUME */}
         <button
           onClick={() => {
             const link = document.createElement("a");
@@ -74,15 +60,19 @@ export default function Hero() {
             link.click();
             document.body.removeChild(link);
           }}
-          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold 
+          hover:bg-cyan-300 transition 
+          inline-flex items-center justify-center cursor-pointer"
         >
           Download Resume
         </button>
 
-        {/* PROJECTS (FIXED ROUTING) */}
+        {/* PROJECTS */}
         <Link
           to="/projects"
-          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold 
+          hover:bg-cyan-300 transition 
+          inline-flex items-center justify-center cursor-pointer"
         >
           My Projects
         </Link>
@@ -90,4 +80,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;
