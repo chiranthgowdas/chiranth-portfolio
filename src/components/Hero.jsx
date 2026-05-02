@@ -19,7 +19,7 @@ const Hero = () => {
             alt="profile"
             className="w-full h-full object-cover"
             style={{
-              objectPosition: "50% 10%"   // 🔥 CHANGE THIS VALUE TO ADJUST FACE
+              objectPosition: "120% 0%"   // 🔥 CHANGE THIS VALUE TO ADJUST FACE
             }}
           />
         </div>
