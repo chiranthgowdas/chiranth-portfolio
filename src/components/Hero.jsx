@@ -41,7 +41,7 @@ export default function Hero() {
             src="/profile.jpg"
             alt="profile"
             className="w-full h-full object-cover"
-            style={{ objectPosition: "60% 35%" }}
+            style={{ objectPosition: "100% 0%" }}
           />
         </div>
       </motion.div>
@@ -77,13 +77,12 @@ export default function Hero() {
         </a>
 
         {/* My Projects */}
-        <button
-          onClick={() => navigate("/projects")}
-          className="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg font-semibold hover:bg-cyan-400 hover:text-black transition"
-        >
-          My Projects
-        </button>
-
+<button
+  onClick={() => navigate("/projects")}
+  className="bg-cyan-400 text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition shadow-lg"
+>
+  My Projects
+</button>
       </div>
 
     </section>
