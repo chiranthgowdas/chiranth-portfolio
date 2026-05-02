@@ -1,19 +1,20 @@
 import profile from "../assets/profile.jpg";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
 
-      {/* 🔥 BACKGROUND GLOW */}
+      {/* Background glow */}
       <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
-      {/* 🔥 PROFILE IMAGE WITH GLOW RING */}
+      {/* Profile */}
       <div className="relative mb-6 group">
-        
-        {/* Glow Ring */}
+
+        {/* Glow ring */}
         <div className="absolute inset-0 rounded-full bg-cyan-400 blur-xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
 
-        {/* Image */}
+        {/* IMAGE */}
         <img
           src={profile}
           alt="Chiranth"
@@ -23,7 +24,7 @@ export default function Hero() {
             rounded-full
             border-4 border-cyan-400
             object-cover
-            object-[50%_20%]
+            object-[100%_0%]   /* 👈 CONTROL THIS */
             scale-105
             transition duration-500
             group-hover:scale-110
@@ -31,17 +32,17 @@ export default function Hero() {
         />
       </div>
 
-      {/* 🔥 NAME */}
+      {/* Name */}
       <h1 className="text-4xl md:text-6xl font-bold text-white mb-3">
         Chiranth Gowda S
       </h1>
 
-      {/* 🔥 TAGLINE */}
+      {/* Tagline */}
       <p className="text-gray-300 text-lg md:text-xl mb-6">
         Data | AI | Software | Innovation
       </p>
 
-      {/* 🔥 BUTTONS */}
+      {/* Buttons */}
       <div className="flex flex-wrap justify-center gap-4">
 
         {/* LinkedIn */}
@@ -49,42 +50,41 @@ export default function Hero() {
           href="https://www.linkedin.com/in/chiranth-gowda-s-67565a310/"
           target="_blank"
           rel="noopener noreferrer"
-          className="
-            px-6 py-3 rounded-lg
-            bg-cyan-400 text-black font-semibold
-            hover:bg-cyan-300
-            transition duration-300
-          "
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300"
         >
           Connect on LinkedIn
         </a>
 
-        {/* Resume */}
+        {/* Resume VIEW */}
         <a
           href="/resume.pdf"
-          download
-          className="
-            px-6 py-3 rounded-lg
-            bg-gray-200 text-black font-semibold
-            hover:bg-white
-            transition duration-300
-          "
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3 rounded-lg bg-gray-200 text-black font-semibold hover:bg-white"
         >
-          Download Resume
+          View Resume
         </a>
 
-        {/* Projects */}
-        <a
-          href="/projects"
-          className="
-            px-6 py-3 rounded-lg
-            bg-cyan-400 text-black font-semibold
-            hover:bg-cyan-300
-            transition duration-300
-          "
+        {/* Resume DOWNLOAD (force) */}
+        <button
+          onClick={() => {
+            const link = document.createElement("a");
+            link.href = "/resume.pdf";
+            link.download = "Chiranth_Gowda_Resume.pdf";
+            link.click();
+          }}
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300"
+        >
+          Download Resume
+        </button>
+
+        {/* Projects (FIXED) */}
+        <Link
+          to="/projects"
+          className="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold hover:bg-cyan-300"
         >
           My Projects
-        </a>
+        </Link>
 
       </div>
     </section>
