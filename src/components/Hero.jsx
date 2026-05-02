@@ -1,78 +1,92 @@
-import { Link } from "react-router-dom";
+import profile from "../assets/profile.jpg";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#021B2B] via-[#052F4F] to-[#0A3D62] text-white px-4 overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
 
-      {/* 🔥 ANIMATED GLOW BLOBS */}
-      <div className="absolute w-[600px] h-[600px] bg-cyan-400 opacity-20 blur-[140px] rounded-full animate-pulse top-[-100px] left-[-100px]" />
-      <div className="absolute w-[500px] h-[500px] bg-blue-500 opacity-20 blur-[140px] rounded-full animate-pulse bottom-[-120px] right-[-120px]" />
+      {/* 🔥 BACKGROUND GLOW */}
+      <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 blur-[120px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
-      {/* ✨ FLOATING PARTICLES */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <span
-            key={i}
-            className="absolute w-1 h-1 bg-white opacity-30 rounded-full animate-ping"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${2 + Math.random() * 3}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* 🔥 PROFILE IMAGE (PERFECT CENTER + GLOW) */}
+      {/* 🔥 PROFILE IMAGE WITH GLOW RING */}
       <div className="relative mb-6 group">
-        <div className="absolute inset-0 rounded-full bg-cyan-400 blur-2xl opacity-50 group-hover:opacity-70 transition"></div>
+        
+        {/* Glow Ring */}
+        <div className="absolute inset-0 rounded-full bg-cyan-400 blur-xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
 
+        {/* Image */}
         <img
-          src="/profile.jpg"
-          alt="profile"
-          className="relative w-52 h-52 md:w-64 md:h-64 rounded-full border-4 border-cyan-400 object-cover object-center shadow-2xl group-hover:scale-105 transition duration-300"
+          src={profile}
+          alt="Chiranth"
+          className="
+            relative
+            w-56 h-56 md:w-72 md:h-72
+            rounded-full
+            border-4 border-cyan-400
+            object-cover
+            object-[50%_20%]
+            scale-105
+            transition duration-500
+            group-hover:scale-110
+          "
         />
       </div>
 
-      {/* 🔥 NAME WITH GRADIENT */}
-      <h1 className="text-4xl md:text-6xl font-bold mb-2 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+      {/* 🔥 NAME */}
+      <h1 className="text-4xl md:text-6xl font-bold text-white mb-3">
         Chiranth Gowda S
       </h1>
 
       {/* 🔥 TAGLINE */}
-      <p className="text-gray-300 text-lg md:text-xl mb-8">
+      <p className="text-gray-300 text-lg md:text-xl mb-6">
         Data | AI | Software | Innovation
       </p>
 
-      {/* 🔥 BUTTONS (GLASS + ANIMATION) */}
+      {/* 🔥 BUTTONS */}
       <div className="flex flex-wrap justify-center gap-4">
 
+        {/* LinkedIn */}
         <a
           href="https://www.linkedin.com/in/chiranth-gowda-s-67565a310/"
           target="_blank"
-          rel="noreferrer"
-          className="px-6 py-3 bg-cyan-500/90 backdrop-blur-md hover:bg-cyan-400 text-black rounded-xl font-semibold shadow-lg hover:scale-110 transition duration-300"
+          rel="noopener noreferrer"
+          className="
+            px-6 py-3 rounded-lg
+            bg-cyan-400 text-black font-semibold
+            hover:bg-cyan-300
+            transition duration-300
+          "
         >
           Connect on LinkedIn
         </a>
 
+        {/* Resume */}
         <a
           href="/resume.pdf"
           download
-          className="px-6 py-3 bg-white/90 backdrop-blur-md text-black rounded-xl font-semibold shadow-lg hover:scale-110 transition duration-300"
+          className="
+            px-6 py-3 rounded-lg
+            bg-gray-200 text-black font-semibold
+            hover:bg-white
+            transition duration-300
+          "
         >
           Download Resume
         </a>
 
-        <Link
-          to="/projects"
-          className="px-6 py-3 bg-cyan-400/90 backdrop-blur-md hover:bg-cyan-300 text-black rounded-xl font-semibold shadow-lg hover:scale-110 transition duration-300"
+        {/* Projects */}
+        <a
+          href="/projects"
+          className="
+            px-6 py-3 rounded-lg
+            bg-cyan-400 text-black font-semibold
+            hover:bg-cyan-300
+            transition duration-300
+          "
         >
           My Projects
-        </Link>
+        </a>
 
       </div>
-
     </section>
   );
 }
