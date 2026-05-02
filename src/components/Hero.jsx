@@ -1,65 +1,91 @@
-import profile from "../assets/profile.jpg";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-const Hero = () => {
+export default function Hero() {
+  const linkedInUrl =
+    "https://www.linkedin.com/in/chiranth-gowda-s-67565a310";
+
+  const navigate = useNavigate();
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-r from-[#021B2B] to-[#0A3A4A] text-white px-4">
-      
-      <img
-        src={profile}
-        alt="profile"
-        className="w-40 h-40 rounded-full border-4 border-cyan-400 shadow-lg mb-6 hover:scale-105 transition duration-300"
-      />
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#071c2f] text-white overflow-hidden">
 
+      {/* NAVBAR */}
+      <div className="absolute top-0 w-full flex justify-between items-center px-10 py-5">
+        <h1 className="text-cyan-400 text-xl font-bold">Chiranth</h1>
+
+        <button
+          onClick={() => window.open(linkedInUrl, "_blank")}
+          className="bg-cyan-400 text-black px-5 py-2 rounded-lg font-medium hover:scale-105 transition"
+        >
+          LinkedIn
+        </button>
+      </div>
+
+      {/* BACKGROUND GLOW */}
+      <div className="absolute w-[400px] h-[400px] bg-cyan-400 opacity-20 blur-[120px] rounded-full top-[45%] right-[10%]" />
+
+      {/* PROFILE IMAGE */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative mb-6 mt-12"
+      >
+        {/* GLOW RING */}
+        <div className="absolute inset-0 rounded-full bg-cyan-400 blur-2xl opacity-40 animate-pulse"></div>
+
+        {/* IMAGE */}
+        <div className="relative w-52 h-52 rounded-full border-4 border-cyan-400 overflow-hidden">
+          <img
+            src="/profile.jpg"
+            alt="profile"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "100% 0%" }}
+          />
+        </div>
+      </motion.div>
+
+      {/* NAME */}
       <h1 className="text-4xl md:text-5xl font-bold mb-2">
         Chiranth Gowda S
       </h1>
 
-      <p className="text-gray-300 mb-6">
+      {/* TAGLINE */}
+      <p className="text-gray-300 mb-8 text-center px-4">
         Data | AI | Software | Innovation
       </p>
 
-      <div className="flex flex-wrap gap-4 justify-center">
-        
+      {/* BUTTONS */}
+      <div className="flex gap-4 flex-wrap justify-center">
+
         {/* LinkedIn */}
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          rel="noreferrer"
-          className="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-lg transition"
+        <button
+          onClick={() => window.open(linkedInUrl, "_blank")}
+          className="bg-cyan-400 text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition shadow-lg"
         >
           Connect on LinkedIn
-        </a>
+        </button>
 
-        {/* Resume */}
+        {/* Resume Download */}
         <a
           href="/resume.pdf"
           download
-          className="bg-gray-200 text-black px-6 py-3 rounded-lg hover:bg-gray-300 transition"
+          className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition shadow-lg"
         >
           Download Resume
         </a>
 
-        {/* Projects */}
-        <a
-          href="/projects"
-          className="bg-cyan-400 text-black px-6 py-3 rounded-lg hover:bg-cyan-500 transition"
-        >
-          My Projects
-        </a>
-
-        {/* GitHub */}
-        <a
-          href="https://github.com/chiranthgowdas"
-          target="_blank"
-          rel="noreferrer"
-          className="bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-900 transition"
-        >
-          GitHub
-        </a>
+        {/* My Projects */}
+<button
+  onClick={() => navigate("/projects")}
+  className="bg-cyan-300 text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition shadow-lg"
+>
+  My Projects
+</button>
 
       </div>
+
     </section>
   );
-};
-
-export default Hero;
+}

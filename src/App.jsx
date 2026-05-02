@@ -6,9 +6,7 @@ import Skills from "./components/Skills";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import ProjectsPage from "./components/ProjectsPage";
-import Footer from "./components/Footer";
 
-// 🔹 Home Page (All sections)
 function Home() {
   return (
     <>
@@ -18,12 +16,10 @@ function Home() {
       <Skills />
       <Certificates />
       <Contact />
-      <Footer /> {/* ✅ correct placement */}
     </>
   );
 }
 
-// 🔹 Main App Routing
 export default function App() {
   return (
     <Routes>

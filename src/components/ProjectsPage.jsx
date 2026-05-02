@@ -1,95 +1,144 @@
-import { useState } from "react";
-
-// sample import (adjust paths)
 import img1 from "../assets/eventsphere/1.png";
 import img2 from "../assets/eventsphere/2.png";
+import img3 from "../assets/eventsphere/3.png";
 
-const ProjectsPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+// Accident (4–9)
+import acc1 from "../assets/accident/4.png";
+import acc2 from "../assets/accident/5.png";
+import acc3 from "../assets/accident/6.png";
+import acc4 from "../assets/accident/7.png";
+import acc5 from "../assets/accident/8.png";
+import acc6 from "../assets/accident/9.png";
 
-  const projects = [
-    {
-      title: "Event Sphere",
-      description:
-        "College event management platform with QR ticketing and dashboards.",
-      images: [img1, img2],
-      tech: ["React", "Node.js", "MongoDB"],
-      github: "https://github.com/chiranthgowdas",
-    },
-  ];
+// Bank (10–12)
+import bank1 from "../assets/bank/10.png";
+import bank2 from "../assets/bank/11.png";
+import bank3 from "../assets/bank/12.png";
 
+// Crowd (13–15)
+import crowd1 from "../assets/crowd/13.png";
+import crowd2 from "../assets/crowd/14.png";
+import crowd3 from "../assets/crowd/15.png";
+
+export default function ProjectsPage() {
   return (
-    <div className="bg-[#021B2B] min-h-screen text-white px-6 py-12">
-      <h1 className="text-3xl text-center mb-10 text-cyan-400">
+    <section className="min-h-screen bg-[#0b1727] text-white px-6 py-20">
+
+      <h1 className="text-4xl text-cyan-400 text-center mb-16">
         My Projects
       </h1>
 
-      {projects.map((project, index) => (
-        <div
-          key={index}
-          className="bg-[#0A3A4A] p-6 rounded-xl shadow-lg mb-10"
-        >
-          <h2 className="text-2xl text-cyan-300 mb-2">
-            {project.title}
-          </h2>
+      {/* ================= CAMPUS HIVE ================= */}
+      <div className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-2xl text-cyan-300 mb-4">
+          CampusHive (Upcoming)
+        </h2>
 
-          <p className="text-gray-300 mb-4">
-            {project.description}
-          </p>
+        <p className="text-gray-300 leading-7">
+          CampusHive is a cloud-based campus management platform designed to
+          streamline complaint handling, lost & found services, and student
+          engagement. It provides a centralized system where students can report
+          issues, track progress, and interact through discussions. The system
+          also uses machine learning to prioritize complaints based on urgency,
+          improving efficiency and transparency.
+        </p>
+      </div>
 
-          {/* Images */}
-          <div className="flex gap-4 overflow-x-auto mb-4">
-            {project.images.map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt=""
-                onClick={() => setSelectedImage(img)}
-                className="w-64 rounded-lg cursor-pointer hover:scale-105 transition"
-              />
-            ))}
-          </div>
+      {/* ================= EVENT SPHERE ================= */}
+      <div className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-2xl text-cyan-300 mb-6">
+          Event Sphere
+        </h2>
 
-          {/* Tech */}
-          <div className="flex gap-2 flex-wrap mb-4">
-            {project.tech.map((t, i) => (
-              <span
-                key={i}
-                className="bg-cyan-500 px-3 py-1 rounded-full text-sm"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-
-          {/* Buttons */}
-          <div className="flex gap-4">
-            <a
-              href={project.github}
-              target="_blank"
-              className="bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-900"
-            >
-              GitHub
-            </a>
-          </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[img1, img2, img3].map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt="event"
+              className="rounded-xl shadow-lg hover:scale-105 transition"
+            />
+          ))}
         </div>
-      ))}
 
-      {/* MODAL */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center"
-          onClick={() => setSelectedImage(null)}
-        >
-          <img
-            src={selectedImage}
-            alt=""
-            className="max-h-[90%] rounded-lg"
-          />
+        <p className="text-gray-300 mt-6">
+          A modern event management system for colleges featuring QR-based
+          ticketing, dashboards, and role-based authentication.
+        </p>
+      </div>
+
+      {/* ================= ACCIDENT ML ================= */}
+      <div className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-2xl text-cyan-300 mb-6">
+          Accident Severity Prediction (ML)
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {[acc1, acc2, acc3, acc4, acc5, acc6].map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt="accident"
+              className="rounded-xl shadow-lg hover:scale-105 transition"
+            />
+          ))}
         </div>
-      )}
-    </div>
+
+        <p className="text-gray-300 mt-6">
+          A machine learning system that predicts accident severity based on
+          weather, road conditions, and traffic features. It compares models
+          like Random Forest and Logistic Regression with visual insights and
+          accuracy reports.
+        </p>
+      </div>
+
+      {/* ================= BANK SYSTEM ================= */}
+      <div className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-2xl text-cyan-300 mb-6">
+          Bank Account Management System
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {[bank1, bank2, bank3].map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt="bank"
+              className="rounded-xl shadow-lg hover:scale-105 transition"
+            />
+          ))}
+        </div>
+
+        <p className="text-gray-300 mt-6">
+          A desktop-based banking system that supports deposits, withdrawals,
+          transaction history tracking, and account management with a simple UI.
+        </p>
+      </div>
+
+      {/* ================= CROWD TRACKER ================= */}
+      <div className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-2xl text-cyan-300 mb-6">
+          Real-Time Crowd Density Tracker
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {[crowd1, crowd2, crowd3].map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt="crowd"
+              className="rounded-xl shadow-lg hover:scale-105 transition"
+            />
+          ))}
+        </div>
+
+        <p className="text-gray-300 mt-6">
+          A real-time crowd monitoring system that calculates crowd density,
+          tracks user location, and predicts overcrowding probability using
+          geospatial data — useful for smart city and safety applications.
+        </p>
+      </div>
+
+    </section>
   );
-};
-
-export default ProjectsPage;
+}
