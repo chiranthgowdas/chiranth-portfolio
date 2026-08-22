@@ -72,22 +72,24 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative mb-8 mt-16"
+        className="relative mb-8 mt-16 group"
       >
-        {/* Glow ring */}
-        <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-[#06d6a0] via-[#22d3ee] to-[#8b5cf6] opacity-40 blur-xl animate-pulse-glow" />
+        {/* Outer ambient glow with controlled radius and high vibrancy */}
+        <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-[#06d6a0] via-[#22d3ee] to-[#8b5cf6] opacity-60 blur-xl animate-pulse-glow" />
 
-        {/* Rotating border ring */}
-        <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#06d6a0] via-[#22d3ee] to-[#8b5cf6] animate-spin-slow opacity-70" />
+        {/* Sharp rotating neon border ring */}
+        <div className="absolute -inset-[3px] rounded-full bg-gradient-to-tr from-[#06d6a0] via-[#22d3ee] to-[#8b5cf6] animate-spin-slow opacity-95 shadow-[0_0_20px_rgba(6,214,160,0.6)]" />
 
-        {/* Image */}
-        <div className="relative w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-[#0a0e1a]">
-          <img
-            src="/profile.jpg"
-            alt="Chiranth Gowda S"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: "100% 0%" }}
-          />
+        {/* Dark isolation barrier & inner frame */}
+        <div className="relative p-[3px] rounded-full bg-[#0a0e1a]">
+          <div className="relative w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-white/10 ring-4 ring-[#0a0e1a] shadow-2xl">
+            <img
+              src="/profile.jpg"
+              alt="Chiranth Gowda S"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style={{ objectPosition: "100% 0%" }}
+            />
+          </div>
         </div>
       </motion.div>
 
@@ -106,11 +108,11 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="text-lg md:text-xl text-gray-400 mb-10 h-8 font-display"
+        className="text-lg md:text-xl text-slate-200 font-medium mb-10 h-8 font-display flex items-center justify-center"
       >
         <span>{displayed}</span>
         <span
-          className="inline-block w-[2px] h-5 bg-[#06d6a0] ml-1 align-middle"
+          className="inline-block w-[2px] h-5 bg-[#06d6a0] ml-1 align-middle shadow-[0_0_8px_#06d6a0]"
           style={{ animation: "typewriter-blink 1s step-end infinite" }}
         />
       </motion.p>
@@ -120,30 +122,39 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="flex gap-4 flex-wrap justify-center"
+        className="flex gap-4 flex-wrap justify-center items-center"
       >
+        {/* Primary CTA */}
+        <button
+          onClick={() => navigate("/projects")}
+          className="glow-btn text-sm md:text-base flex items-center gap-2 font-semibold shadow-lg shadow-[#06d6a0]/20"
+        >
+          <span>My Projects</span>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </button>
+
+        {/* Secondary CTA */}
+        <button
+          onClick={() => setShowResume(true)}
+          className="glow-btn-outline text-sm md:text-base flex items-center gap-2"
+        >
+          <span>📄 View Resume</span>
+        </button>
+
+        {/* Outlined / Tertiary */}
         <a
           href="https://www.linkedin.com/in/chiranth-gowda-s-67565a310"
           target="_blank"
           rel="noopener noreferrer"
-          className="glow-btn text-sm md:text-base"
+          className="px-5 py-3 text-sm md:text-base font-medium text-gray-200 hover:text-white border border-white/20 hover:border-[#06d6a0]/50 rounded-xl bg-white/[0.04] hover:bg-[#06d6a0]/10 transition-all duration-300 flex items-center gap-2 shadow-sm"
         >
-          Connect on LinkedIn
+          <svg className="w-4 h-4 fill-current text-[#06d6a0]" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          <span>Connect on LinkedIn</span>
         </a>
-
-        <button
-          onClick={() => setShowResume(true)}
-          className="glow-btn-outline text-sm md:text-base"
-        >
-          📄 View Resume
-        </button>
-
-        <button
-          onClick={() => navigate("/projects")}
-          className="glow-btn text-sm md:text-base"
-        >
-          My Projects
-        </button>
       </motion.div>
 
       {/* Scroll indicator */}
@@ -153,13 +164,13 @@ export default function Hero() {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-gray-500 tracking-widest uppercase">Scroll</span>
+        <span className="text-xs text-slate-300 font-semibold tracking-widest uppercase">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border-2 border-gray-600 flex justify-center pt-1.5"
+          className="w-5 h-8 rounded-full border-2 border-slate-400/80 flex justify-center pt-1.5"
         >
-          <div className="w-1 h-1.5 rounded-full bg-[#06d6a0]" />
+          <div className="w-1 h-1.5 rounded-full bg-[#06d6a0] shadow-[0_0_6px_#06d6a0]" />
         </motion.div>
       </motion.div>
 
@@ -192,7 +203,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <h3 className="text-white font-display font-semibold text-sm">Resume</h3>
-                    <p className="text-gray-500 text-xs">Chiranth Gowda S</p>
+                    <p className="text-slate-300 text-xs">Chiranth Gowda S</p>
                   </div>
                 </div>
 
@@ -201,7 +212,7 @@ export default function Hero() {
                   <a
                     href={RESUME_PATH}
                     download="Chiranth-Resume.pdf"
-                    className="glow-btn !text-xs !py-2 !px-4 flex items-center gap-1.5"
+                    className="glow-btn !text-xs !py-2 !px-4 flex items-center gap-1.5 font-semibold"
                   >
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -214,7 +225,7 @@ export default function Hero() {
                     href={RESUME_PATH}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-lg glass-card !p-0 flex items-center justify-center text-gray-400 hover:text-[#06d6a0] transition-colors"
+                    className="w-8 h-8 rounded-lg glass-card !p-0 flex items-center justify-center text-slate-300 hover:text-[#06d6a0] transition-colors"
                     title="Open in new tab"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -225,7 +236,7 @@ export default function Hero() {
                   {/* Close button */}
                   <button
                     onClick={() => setShowResume(false)}
-                    className="w-8 h-8 rounded-lg glass-card !p-0 flex items-center justify-center text-gray-400 hover:text-red-400 transition-colors"
+                    className="w-8 h-8 rounded-lg glass-card !p-0 flex items-center justify-center text-slate-300 hover:text-red-400 transition-colors"
                     title="Close (Esc)"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

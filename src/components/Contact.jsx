@@ -64,7 +64,7 @@ export default function Contact() {
 
       <motion.div variants={SectionReveal.itemVariants}>
         <h2 className="section-heading gradient-text">Get In Touch</h2>
-        <p className="text-gray-400 text-center mb-12 text-sm">
+        <p className="text-slate-300 text-center mb-12 text-sm md:text-base font-normal">
           Let's connect and create something amazing
         </p>
       </motion.div>
@@ -81,13 +81,13 @@ export default function Contact() {
               <Wrapper
                 key={item.label}
                 {...(item.href ? { href: item.href } : {})}
-                className="glass-card p-6 text-center group"
+                className="glass-card p-6 text-center group border border-white/10 hover:border-[#06d6a0]/40 transition-all duration-300"
               >
                 <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-[#06d6a0]/20 to-[#8b5cf6]/20 flex items-center justify-center text-[#06d6a0] group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
-                <p className="text-xs text-gray-500 mb-1">{item.label}</p>
-                <p className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                <p className="text-xs text-slate-300 font-semibold mb-1 uppercase tracking-wider">{item.label}</p>
+                <p className="text-sm text-slate-100 font-medium group-hover:text-[#06d6a0] transition-colors break-words">
                   {item.value}
                 </p>
               </Wrapper>
@@ -99,7 +99,7 @@ export default function Contact() {
         <motion.div variants={SectionReveal.itemVariants} className="text-center mb-10">
           <a
             href="mailto:chiranthgowdas13@gmail.com"
-            className="glow-btn inline-block text-sm"
+            className="glow-btn inline-block text-sm font-semibold"
           >
             Send me an Email →
           </a>
@@ -116,7 +116,7 @@ export default function Contact() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-xl glass-card !p-0 flex items-center justify-center text-gray-400 hover:text-[#06d6a0] transition-colors"
+              className="w-12 h-12 rounded-xl glass-card !p-0 flex items-center justify-center text-slate-300 hover:text-[#06d6a0] hover:border-[#06d6a0]/50 transition-colors"
               aria-label={s.name}
             >
               {s.icon}
@@ -128,10 +128,10 @@ export default function Contact() {
       {/* Footer */}
       <motion.div
         variants={SectionReveal.itemVariants}
-        className="mt-20 pt-8 border-t border-white/5 text-center"
+        className="mt-20 pt-8 border-t border-white/10 text-center"
       >
-        <p className="text-gray-600 text-xs">
-          © {new Date().getFullYear()} Chiranth Gowda S · Built with React & ❤️
+        <p className="text-slate-400 text-xs font-medium">
+          © {new Date().getFullYear()} Chiranth Gowda S · Built with React & Tailwind CSS
         </p>
       </motion.div>
     </SectionReveal>

@@ -171,7 +171,7 @@ export default function ProjectsPage() {
           <h1 className="font-display text-3xl md:text-4xl font-bold gradient-text">
             My Projects
           </h1>
-          <p className="text-gray-500 text-sm mt-1">
+          <p className="text-slate-300 text-sm mt-1 font-medium">
             Sorted by complexity & recruitment relevance
           </p>
         </div>
