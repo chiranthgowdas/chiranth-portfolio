@@ -26,6 +26,15 @@ function CursorGlow() {
   );
 }
 
+function SectionDivider() {
+  return (
+    <div className="relative max-w-5xl mx-auto px-6 pointer-events-none">
+      <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-[2px] bg-gradient-to-r from-transparent via-[#06d6a0]/40 to-transparent blur-[1px]" />
+    </div>
+  );
+}
+
 function Home() {
   return (
     <>
@@ -33,9 +42,13 @@ function Home() {
       <CursorGlow />
       <Navbar />
       <Hero />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <Skills />
+      <SectionDivider />
       <Certificates />
+      <SectionDivider />
       <Contact />
     </>
   );

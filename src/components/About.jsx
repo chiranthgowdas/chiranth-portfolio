@@ -33,9 +33,9 @@ function CountUp({ target, suffix = "" }) {
 }
 
 const stats = [
-  { value: 9.2, label: "CGPA", suffix: "CGPA" },
-  { value: 8, label: "Projects", suffix: "+" },
-  { value: 14, label: "Certifications", suffix: "+" },
+  { value: 9.2, label: "CGPA", suffix: "CGPA", icon: "🎓", sub: "6th Semester" },
+  { value: 8, label: "Projects", suffix: "+", icon: "🚀", sub: "Full-Stack & ML" },
+  { value: 14, label: "Certifications", suffix: "+", icon: "📜", sub: "Verified Credentials" },
 ];
 
 export default function About() {
@@ -62,15 +62,33 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Stats Row */}
+        {/* Stats Counter Cards: Dark translucent containers with subtle borders & equal visual weight */}
         <motion.div
           variants={SectionReveal.itemVariants}
-          className="grid grid-cols-3 gap-4 mt-10"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mt-10"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="glass-card p-6 text-center">
-              <CountUp target={stat.value} suffix={stat.suffix} />
-              <p className="text-slate-300 text-sm font-medium mt-2">{stat.label}</p>
+            <div
+              key={stat.label}
+              className="bg-[#0c1424]/90 backdrop-blur-md border border-slate-700/70 hover:border-cyan-500/50 rounded-2xl p-6 md:p-7 text-center transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-black/20 group relative overflow-hidden"
+            >
+              {/* Subtle top glow highlight */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              <div className="text-2xl mb-2 group-hover:scale-110 transition-transform inline-block">
+                {stat.icon}
+              </div>
+
+              <div>
+                <CountUp target={stat.value} suffix={stat.suffix} />
+              </div>
+
+              <p className="text-slate-100 text-base font-semibold mt-1 font-display">
+                {stat.label}
+              </p>
+              <p className="text-slate-400 text-xs font-medium mt-0.5">
+                {stat.sub}
+              </p>
             </div>
           ))}
         </motion.div>

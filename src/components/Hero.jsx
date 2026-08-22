@@ -57,10 +57,20 @@ export default function Hero() {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
+  // Scroll fade for indicator
+  const [hasScrolled, setHasScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-12 pb-24"
     >
       {/* Floating gradient blobs */}
       <div className="blob blob-cyan w-[500px] h-[500px] -top-32 -right-32 animate-float" />
@@ -72,7 +82,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative mb-8 mt-16 group"
+        className="relative mb-8 mt-12 group"
       >
         {/* Outer ambient glow with controlled radius and high vibrancy */}
         <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-[#06d6a0] via-[#22d3ee] to-[#8b5cf6] opacity-60 blur-xl animate-pulse-glow" />
@@ -122,7 +132,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="flex gap-4 flex-wrap justify-center items-center"
+        className="flex gap-4 flex-wrap justify-center items-center mb-8"
       >
         {/* Primary CTA */}
         <button
@@ -157,20 +167,20 @@ export default function Hero() {
         </a>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator: Positioned at bottom-4 with fade-out on scroll */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 flex flex-col items-center gap-2"
+        animate={{ opacity: hasScrolled ? 0 : 0.85, y: hasScrolled ? 10 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute bottom-4 flex flex-col items-center gap-1.5 pointer-events-none"
       >
-        <span className="text-xs text-slate-300 font-semibold tracking-widest uppercase">Scroll</span>
+        <span className="text-[10px] text-slate-300 font-semibold tracking-widest uppercase opacity-80">Scroll</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border-2 border-slate-400/80 flex justify-center pt-1.5"
+          className="w-4 h-7 rounded-full border-2 border-slate-400/60 flex justify-center pt-1"
         >
-          <div className="w-1 h-1.5 rounded-full bg-[#06d6a0] shadow-[0_0_6px_#06d6a0]" />
+          <div className="w-1 h-1 rounded-full bg-[#06d6a0] shadow-[0_0_6px_#06d6a0]" />
         </motion.div>
       </motion.div>
 
